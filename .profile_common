@@ -1,0 +1,59 @@
+
+
+### Load local machine specific profile (should set $NICKNAME)
+[ -r ~/.profile_local ] && source ~/.profile_local
+
+### Update PATH
+export PATH=$PATH:$HOME/.local/bin:$HOME/bin
+
+### Aliases
+alias ls="ls --color"
+alias ll="ls -lh"
+alias la="ls -a"
+
+alias cd-="cd -"
+alias cd..="cd .."
+
+alias gs="git status"
+alias gb="git branch --all"
+alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias gg="git log --graph -n 10 --oneline"
+
+alias psa="source venv/bin/activate"
+
+### Set VIM as default editor for all programs
+export VISUAL=vim
+export EDITOR="$VISUAL"
+
+### If installed enable pyenv
+command -v pyenv &> /dev/null && eval "$(pyenv init -)" 
+
+function about () {
+    echo ""
+    echo "          |_| o";
+    echo "          | | |";
+    echo ""
+    STRING='%-11s - %s\n'
+    PREFIX="  "
+    printf "$STRING" "${PREFIX}User" "${USER-Unknown}"
+    printf "$STRING" "${PREFIX}Host" "${HOST-Unknown}"
+    printf "$STRING" "${PREFIX}Nickname" "${NICKNAME-Unknown}"
+    if command -v sw_vers &> /dev/null ; then
+        LOCAL_SYS=$(sw_vers | awk '/ProductName/ {printf $2 " (" }  /ProductVersion/ {print $2 ")"}')
+    elif [ -r /etc/os-release ]; then
+        LOCAL_SYS_1=$(cat /etc/os-release | \
+                awk '/^NAME/ {printf $0}' | \
+                sed -e 's/NAME="//' | \
+                sed -e 's/"$//g')
+        LOCAL_SYS_2=$(cat /etc/os-release | \
+                awk '/^VERSION_ID/ {printf $0}' | \
+                sed -e 's/VERSION_ID=//' | \
+                sed -e 's/"//g')
+        LOCAL_SYS="$LOCAL_SYS_1 ($LOCAL_SYS_2)"
+    else
+        echo Unable to identify system
+    fi
+    printf "$STRING" "${PREFIX}System" "${LOCAL_SYS-Unknown}"
+    echo ""
+}
+about
