@@ -17,6 +17,12 @@ set wrap
 set textwidth=120
 
 " 4-space tabs
-:set tabstop=4
-:set shiftwidth=4
+set tabstop=4
+set shiftwidth=4
+
+
+" enables automatic indentation on new line (for coding)
+set autoindent
+filetype plugin indent on
+
 
