@@ -4,13 +4,13 @@ options(
     setWidthOnResize = TRUE,
     HTTPUserAgent = sprintf(
         "R/%s R (%s)", 
-	getRversion(), 
-	paste(
-	    getRversion(), 
-	    R.version["platform"], 
-	    R.version["arch"], 
-	    R.version["os"]
-	)
+		getRversion(), 
+		paste(
+			getRversion(), 
+			R.version["platform"], 
+			R.version["arch"], 
+			R.version["os"]
+		)
     )
 )
 
