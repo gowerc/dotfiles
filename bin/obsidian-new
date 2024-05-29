@@ -8,46 +8,41 @@
 
 import urllib.parse
 import uuid
+import platform
+import subprocess
+
+
+def open_uri(file_uri):
+    if platform.system() == 'Darwin':
+        subprocess.call(('open', file_uri))
+    else:
+        subprocess.call(('xdg-open', file_uri))
+
 
 title = urllib.parse.quote(input("Page title: "))
 uuid = uuid.uuid4()
 vault_id  = "eaf6ac05519def2d"
 
-find_me_string = f"""
-# UUID = {uuid}
-
-# Direct Open
-obsidian://open?vault={vault_id}&file={title}
-
-# Search for UUID
-obsidian://search?vault={vault_id}&query=[UUID]%20{uuid}
-"""
-
-
 content = urllib.parse.quote(f"""---
 UUID: {uuid}
 ---
-
 ## Find me Instructions
 
 Paste the following to Zotero to find the note at a later date:
-```{find_me_string}```
+```bash
+# UUID = {uuid}
+
+# Direct Open (use "open" on MacOS or "xdg-open" on Linux for CLI access)
+obsidian://open?vault={vault_id}&file={title}
+
+# Search for UUID (use "open" on MacOS or "xdg-open" on Linux for CLI access)
+obsidian://search?vault={vault_id}&query=[UUID]%20{uuid}
+```
 
 ## Paper Notes
+
 """)
 
 create_path = urllib.parse.quote("4) Courses/Papers")
 
-
-print(f"""
-#### Run this once to create the note
-
-# MacOS
-open "obsidian://new?vault={vault_id}&file={create_path}/{title}&content={content}"
-
-# Linux
-# TODO
-
-#### Paste the following to Zotero to find the note at a later date:
-{find_me_string}
-""")
+open_uri(f"obsidian://new?vault={vault_id}&file={create_path}/{title}&content={content}")
