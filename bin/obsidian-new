@@ -16,11 +16,11 @@ vault_id  = "eaf6ac05519def2d"
 find_me_string = f"""
 # UUID = {uuid}
 
-# MacOS - Direct Open
-open "obsidian://open?vault={vault_id}&file={title}"
+# Direct Open
+obsidian://open?vault={vault_id}&file={title}
 
-# MacOS - Search for UUID
-open "obsidian://search?vault={vault_id}&query=[UUID]%20{uuid}"
+# Search for UUID
+obsidian://search?vault={vault_id}&query=[UUID]%20{uuid}
 """
 
 
@@ -28,8 +28,12 @@ content = urllib.parse.quote(f"""---
 UUID: {uuid}
 ---
 
+## Find me Instructions
+
 Paste the following to Zotero to find the note at a later date:
 ```{find_me_string}```
+
+## Paper Notes
 """)
 
 create_path = urllib.parse.quote("4) Courses/Papers")
