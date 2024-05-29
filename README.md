@@ -12,20 +12,19 @@ Note that all of the following assume you are in the root directory of this repo
 
 Create symlinks for all files in this repo in the home directory. Note that by default `stow`
 will setup symlinks in the parent directory e.g. `../` thus we need to specify the target directory
-of `$HOME` if we put our dotfiles repo not in the home directory.
+of `$HOME` if our dotfiles repo is note in the home directory.
 ```bash
 stow --target=$HOME .      # for all files
 stow --target=$HOME <file> # for specific file to create symlink for
 ```
 
-
-
-Delete all symlinks in the home directory for files that exist within this reporisotry:
+Delete all symlinks in the home directory for files that exist within this reporisotry
+(will throw an error if a non-symlink file has the same name as a file in our repo):
 ```bash
 stow --delete --target=$HOME .
 ```
 
-Refreshh al the symlinks in the home directory for files that exist within this repository:
+Refresh all the symlinks in the home directory for files that exist within this repository:
 ```bash
 stow --restow --target=$HOME .
 ```

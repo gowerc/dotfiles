@@ -1,0 +1,49 @@
+#!/usr/bin/env python3
+
+#
+# Simple script to create a new obsidian "papers" note which contains
+# a UUID which can be used to link / find the note at a later date from
+# Zotero
+#
+
+import urllib.parse
+import uuid
+
+title = urllib.parse.quote(input("Page title: "))
+uuid = uuid.uuid4()
+vault_id  = "eaf6ac05519def2d"
+
+find_me_string = f"""
+# UUID = {uuid}
+
+# MacOS - Direct Open
+open "obsidian://open?vault={vault_id}&file={title}"
+
+# MacOS - Search for UUID
+open "obsidian://search?vault={vault_id}&query=[UUID]%20{uuid}"
+"""
+
+
+content = urllib.parse.quote(f"""---
+UUID: {uuid}
+---
+
+Paste the following to Zotero to find the note at a later date:
+```{find_me_string}```
+""")
+
+create_path = urllib.parse.quote("4) Courses/Papers")
+
+
+print(f"""
+#### Run this once to create the note
+
+# MacOS
+open "obsidian://new?vault={vault_id}&file={create_path}/{title}&content={content}"
+
+# Linux
+# TODO
+
+#### Paste the following to Zotero to find the note at a later date:
+{find_me_string}
+""")
