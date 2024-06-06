@@ -2,7 +2,10 @@
 options(
 
     # Set default CRAN repo
-    "repos" = c(CRAN = "https://www.stats.bris.ac.uk/R"),
+    "repos" = c(
+        CRAN = "https://www.stats.bris.ac.uk/R",
+        STAN = "https://stan-dev.r-universe.dev"
+    ),
 
     # Automatically set width if terminal size changes
     setWidthOnResize = TRUE,
