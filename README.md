@@ -29,7 +29,11 @@ Refresh all the symlinks in the home directory for files that exist within this 
 stow --restow --target=$HOME .
 ```
 
-## Bash Profile Misc Notes
+## Misc Notes
+
+You should run `mkdir ~/bin` first as otherwise Stow will symlink the entire bin folder from
+this git repo rather than just the individual files within the bin folder.
+
 
 `.profile_common` attempts to source another file called `.profile_local`. This file
 is intended to contain any local configurations that are only intended for that specific
