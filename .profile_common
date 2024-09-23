@@ -4,7 +4,7 @@
 [ -r ~/.profile_local ] && source ~/.profile_local
 
 ### Update PATH
-export PATH=$PATH:$HOME/.local/bin:$HOME/bin
+export PATH=$HOME/bin:$HOME/.local/bin:$PATH
 
 ### Aliases
 alias ls="ls --color"
