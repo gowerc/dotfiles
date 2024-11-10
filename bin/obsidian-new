@@ -21,7 +21,12 @@ def open_uri(file_uri):
 
 title = urllib.parse.quote(input("Page title: "))
 uuid = uuid.uuid4()
-vault_id  = "eaf6ac05519def2d"
+
+# vaults = {
+#     "Lappy-fed": "754b150a43b73557",
+#     "Lappy": "eaf6ac05519daef2d"
+# }
+
 
 content = urllib.parse.quote(f"""---
 UUID: {uuid}
@@ -33,16 +38,16 @@ Paste the following to Zotero to find the note at a later date:
 # UUID = {uuid}
 
 # Direct Open (use "open" on MacOS or "xdg-open" on Linux for CLI access)
-obsidian://open?vault={vault_id}&file={title}
+obsidian://open?file={title}
 
 # Search for UUID (use "open" on MacOS or "xdg-open" on Linux for CLI access)
-obsidian://search?vault={vault_id}&query=[UUID]%20{uuid}
+obsidian://search?query=[UUID]%20{uuid}
 ```
 
 ## Paper Notes
 
 """)
 
-create_path = urllib.parse.quote("4) Courses/Papers")
+create_path = urllib.parse.quote("Courses/Papers")
 
-open_uri(f"obsidian://new?vault={vault_id}&file={create_path}/{title}&content={content}")
+open_uri(f"obsidian://new?file={create_path}/{title}&content={content}")
