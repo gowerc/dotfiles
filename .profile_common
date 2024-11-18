@@ -57,3 +57,29 @@ function about () {
     echo ""
 }
 about
+
+
+#
+# Copy and paste
+#     Uses xclip on macos and pbcopy/pbpaste on macos
+#
+if command -v xclip 1>/dev/null; then
+	_copy() {
+        cat | xclip -selection clipboard
+	}
+	_paste() {
+		xclip -selection clipboard -o
+	}
+elif command -v pbcopy 1>/dev/null; then
+	_copy() {
+        cat | pbcopy
+	}
+	_paste() {
+		pbpaste
+	}
+fi
+
+
+
+
+
