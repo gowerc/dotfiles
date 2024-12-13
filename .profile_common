@@ -21,6 +21,9 @@ alias gg="git log --graph -n 10 --oneline"
 
 alias psa="source venv/bin/activate"
 
+# If nvim is installed then use that by default instead of vim
+command -v nvim &> /dev/null && alias vim="nvim"
+
 ### Set VIM as default editor for all programs
 export VISUAL=vim
 export EDITOR="$VISUAL"
@@ -78,8 +81,5 @@ elif command -v pbcopy 1>/dev/null; then
 		pbpaste
 	}
 fi
-
-
-
 
 
