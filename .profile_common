@@ -24,6 +24,9 @@ alias psa="source venv/bin/activate"
 # If nvim is installed then use that by default instead of vim
 command -v nvim &> /dev/null && alias vim="nvim"
 
+# If open isn't available (on Linux) set to xdg-open
+command -v xdg-open &> /dev/null && alias open="xdg-open"
+
 ### Set VIM as default editor for all programs
 export VISUAL=vim
 export EDITOR="$VISUAL"
