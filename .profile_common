@@ -6,6 +6,13 @@
 ### Update PATH
 export PATH=$HOME/bin:$HOME/.local/bin:$PATH
 
+
+### Update XDG path to find desktop files
+if [ -d $HOME/.local/share/applications ] ; then 
+    export XDG_DATA_DIRS=$HOME/.local/share/applications:$XDG_DATA_DIRS
+fi
+
+
 ### Aliases
 alias ls="ls --color"
 alias ll="ls -lh"
@@ -66,8 +73,9 @@ about
 
 
 #
-# Copy and paste
-#     Uses xclip on macos and pbcopy/pbpaste on macos
+# Copy and paste from system clipboard
+#     Uses xclip on Linux and pbcopy/pbpaste on macos
+#     Usage:   `echo Hello | _copy` to
 #
 if command -v xclip 1>/dev/null; then
 	_copy() {
