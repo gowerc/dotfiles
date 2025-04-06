@@ -20,7 +20,9 @@ vim.opt.rtp:prepend(lazypath)
 
 
 -- Set leader key 
-vim.g.mapleader = " "
+--  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 
 
 -- Setup lazy.nvim
@@ -40,4 +42,7 @@ require("lazy").setup({
 -- Make sure to setup `mapleader` and `maplocalleader` before
 -- loading lazy.nvim so that mappings are correct.
 -- This is also a good place to setup other settings (vim.opt)
-require("main")
+require("utils")
+require("remaps")
+require("terminal")
+require("options")

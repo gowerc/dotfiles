@@ -1,4 +1,4 @@
-
+return {}
 
 -------------------------------------
 ----        mason-lspconfig      ----
@@ -58,7 +58,7 @@
 -- lua vim.lsp.buf.signature_help()
 
 
-return {
+-- return {
 
     -- -- LSP support
     -- {'neovim/nvim-lspconfig'},
@@ -183,4 +183,8 @@ return {
 
     --     end
     -- },
-}
+-- }
+
+
+
+

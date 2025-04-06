@@ -14,3 +14,6 @@ vim.keymap.set("n", "<esc><esc><esc>", vim.cmd.noh, { noremap = true })
 
 vim.keymap.set("n", "<leader>sc", function() vim.cmd("set spell!") end)
 
+
+-- Trigger signature help overlay
+vim.keymap.set("i", "<C-S-Space>", vim.lsp.buf.signature_help)

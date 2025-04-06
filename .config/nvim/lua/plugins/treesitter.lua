@@ -27,7 +27,7 @@ return {
             auto_install = true,
 
             
-            indent = { enable = true },
+            indent = { enable = false },
             -- List of parsers to ignore installing (or "all")
             ignore_install = {  },
 
