@@ -22,3 +22,9 @@ options(
         )
     )
 )
+
+if (file.exists("~/.Rprofile_local")) {
+    source("~/.Rprofile_local")
+}
+
+
