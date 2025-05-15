@@ -1,19 +1,25 @@
 
 
-### Load local machine specific profile (should set $NICKNAME)
+# Load local machine specific profile (should set $NICKNAME)
 [ -r ~/.profile_local ] && source ~/.profile_local
 
-### Update PATH
+# Update PATH
 export PATH=$HOME/bin:$HOME/.local/bin:$PATH
 
 
-### Update XDG path to find desktop files
+# Update XDG path to find desktop files
 if [ -d $HOME/.local/share/applications ] ; then 
     export XDG_DATA_DIRS=$HOME/.local/share/applications:$XDG_DATA_DIRS
 fi
 
 
-### Aliases
+# Explicitly set XDG config so that Ghosty on mac uses it to source it's config file
+XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}
+export XDG_CONFIG_HOME
+
+
+
+# Aliases
 alias ls="ls --color"
 alias ll="ls -lh"
 alias la="ls -a"
