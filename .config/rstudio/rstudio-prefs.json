@@ -1,0 +1,47 @@
+{
+    "show_hidden_files": true,
+    "initial_working_directory": "~",
+    "default_r_version": {
+        "version": "",
+        "r_home": "",
+        "label": "",
+        "module": ""
+    },
+    "panes": {
+        "quadrants": [
+            "Source",
+            "TabSet1",
+            "Console",
+            "TabSet2"
+        ],
+        "tabSet1": [
+            "Presentation"
+        ],
+        "tabSet2": [
+            "Environment",
+            "History",
+            "Files",
+            "Plots",
+            "Connections",
+            "Packages",
+            "Help",
+            "Build",
+            "VCS",
+            "Tutorial",
+            "Viewer",
+            "Presentations"
+        ],
+        "hiddenTabSet": [],
+        "console_left_on_top": false,
+        "console_right_on_top": true,
+        "additional_source_columns": 0
+    },
+    "posix_terminal_shell": "bash",
+    "num_spaces_for_tab": 4,
+    "insert_native_pipe_operator": true,
+    "editor_keybindings": "vim",
+    "load_workspace": false,
+    "always_save_history": false,
+    "python_project_environment_automatic_activate": false,
+    "spelling_dictionary_language": "en_GB"
+}
