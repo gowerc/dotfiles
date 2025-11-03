@@ -1,7 +1,7 @@
 
 
 
-
+export DEBUG_LOADED_BASHPROFILE="yes"
 
 
 
