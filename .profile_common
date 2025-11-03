@@ -81,6 +81,38 @@ function about () {
 #case $- in *i*) about;; esac
 case $- in *i*) export about;; esac
 
+
+
+shell_debug() {
+    echo "\nDebug Information for Shell"
+    echo "-------------------------------------"
+    echo -n "Interactive-Shell  = "
+    case $- in
+        *i*) echo "True" ;;
+        *) echo "False" ;;
+    esac
+    echo -n "Login-Shell        = "
+    case $0 in
+        -*) echo "True" ;;
+        *) echo "False" ;;
+    esac
+    echo -n "\$PS1 set           = "
+    if [ -n "${PS1+x}" ]; then
+        echo "True"
+    else
+        echo "False"
+    fi
+    echo "\$TERM              = ${TERM}"
+    echo "\$(tty)             = $(tty)"
+    echo "\$USER              = $USER"
+    echo "\$LANG              = $LANG"
+    echo "\$LC_ALL            = $LC_ALL"
+    echo "\$SHLVL             = ${SHLVL:-1}"
+    echo "\$SHELL             = $SHELL"
+}
+
+
+
 #
 # Copy and paste from system clipboard
 #     Uses xclip on Linux and pbcopy/pbpaste on macos
