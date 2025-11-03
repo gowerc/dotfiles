@@ -85,7 +85,7 @@ case $- in *i*) export about;; esac
 
 
 shell_debug() {
-    printf "\nDebug Information for Shell"
+    printf "\nDebug Information for Shell\n"
     echo "-------------------------------------"
     printf "%s" "Interactive-Shell  = "
     case $- in
