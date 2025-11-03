@@ -25,10 +25,13 @@ export TPUT_BOLD="$(tput bold)"    # bold
 export TPUT_UND="$(tput smul)"     # underline
 export TPUT_END="$(tput sgr0)"     # end all enhancements
 
+
+if [[ $- == *i* ]]; then
 export PS1="
 ${VIRTUAL_ENV:+(venv) }\
 \[\${TPUT_BLUE}\]\${NICKNAME}\[\${TPUT_END}\]\${NICKNAME:+ - }\
 \[\${TPUT_GREEN}\]\$(pwd)\[\${TPUT_END}\] \
 \[\${TPUT_FAINT_PURPLE}\]\$(parse_git_branch)\[\${TPUT_END}\]\n\
 \[\${TPUT_BOLD}\]\[\${TPUT_PURPLE}\]> \[\${TPUT_END}\]"
+fi
 

@@ -75,8 +75,11 @@ function about () {
     printf "$STRING" "${PREFIX}System" "${LOCAL_SYS-Unknown}"
     echo ""
 }
-about
 
+# Only execute "about" if we are running in interactive mode
+# Otherwise the startup script breaks sftp connections
+#case $- in *i*) about;; esac
+case $- in *i*) export about;; esac
 
 #
 # Copy and paste from system clipboard
