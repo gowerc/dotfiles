@@ -85,14 +85,14 @@ case $- in *i*) export about;; esac
 
 
 shell_debug() {
-    echo "\nDebug Information for Shell"
+    printf "\nDebug Information for Shell"
     echo "-------------------------------------"
-    echo -n "Interactive-Shell  = "
+    printf "%s" "Interactive-Shell  = "
     case $- in
         *i*) echo "True" ;;
         *) echo "False" ;;
     esac
-    echo -n "Login-Shell        = "
+    printf "%s" "Login-Shell        = "
     case $0 in
         -*) echo "True" ;;
         *) echo "False" ;;
