@@ -1,10 +1,4 @@
 
-
-
-export DEBUG_LOADED_BASHPROFILE="yes"
-
-
-
 if [ -r $HOME/.profile_common ] ; then
     source $HOME/.profile_common
 fi
