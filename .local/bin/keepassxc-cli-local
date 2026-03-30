@@ -1,5 +1,15 @@
 #!/bin/bash
 
+#
+# Simple wrapper script around `keepassxc-cli` to handle
+# master password caching. Uses `keyctl` with timeout on Linux
+# (recommend called `keyctl new_session` in advance) and
+# Mac Keychain.
+#
+# Usage:
+#     keepassxc-cli-local show -q ${PROJECTS_SECRETS_DB} "AutoBackup"
+#
+
 OS=$(uname -s)
 SERVICE_NAME="keepassxc_master"
 
@@ -8,9 +18,9 @@ if [ "$OS" = "Linux" ]; then
     # LINUX LOGIC (keyctl)
     # ==========================================
     if ! keyctl search @s user "$SERVICE_NAME" >/dev/null 2>&1; then
-        echo -n "Enter password: "
+        echo -n "Enter password: " >&2
         read -s MASTER
-        echo ""
+        echo "" >&2
         echo -n "$MASTER" | keyctl padd user "$SERVICE_NAME" @s >/dev/null
         unset MASTER
     fi
@@ -19,7 +29,6 @@ if [ "$OS" = "Linux" ]; then
     
     # Rolling 30-minute timeout for the in-memory cache
     keyctl timeout "$MASTER_ID" 1800
-    
     keyctl pipe "$MASTER_ID" | keepassxc-cli "$@"
 
 elif [ "$OS" = "Darwin" ]; then
