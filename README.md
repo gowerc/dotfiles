@@ -14,6 +14,8 @@ Create symlinks for all files in this repo in the home directory. Note that by d
 will setup symlinks in the parent directory e.g. `../` thus we need to specify the target directory
 of `$HOME` if our dotfiles repo is note in the home directory.
 ```bash
+mkdir -p $HOME/.local/bin
+mkdir -p $HOME/.config/rstudio
 stow --target=$HOME .      # for all files
 stow --target=$HOME <file> # for specific file to create symlink for
 ```

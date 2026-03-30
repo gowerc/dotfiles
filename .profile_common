@@ -80,7 +80,7 @@ function about () {
 # Only execute "about" if we are running in interactive mode
 # Otherwise the startup script breaks sftp connections
 #case $- in *i*) about;; esac
-case $- in *i*) export about;; esac
+case $- in *i*) about;; esac
 
 
 
@@ -135,4 +135,10 @@ elif command -v pbcopy 1>/dev/null; then
 	}
 fi
 
+
+# Support for vcpkg
+if command -v vcpkg &> /dev/null  ; then
+    export VCPKG_DISABLE_METRICS=TRUE
+    export VCPKG_ROOT=$(dirname "$(realpath "$(command -v vcpkg)")")
+fi
 

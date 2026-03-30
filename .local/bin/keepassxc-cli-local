@@ -1,0 +1,45 @@
+#!/bin/bash
+
+OS=$(uname -s)
+SERVICE_NAME="keepassxc_master"
+
+if [ "$OS" = "Linux" ]; then
+    # ==========================================
+    # LINUX LOGIC (keyctl)
+    # ==========================================
+    if ! keyctl search @s user "$SERVICE_NAME" >/dev/null 2>&1; then
+        echo -n "Enter password: "
+        read -s MASTER
+        echo ""
+        echo -n "$MASTER" | keyctl padd user "$SERVICE_NAME" @s >/dev/null
+        unset MASTER
+    fi
+
+    MASTER_ID=$(keyctl search @s user "$SERVICE_NAME")
+    
+    # Rolling 30-minute timeout for the in-memory cache
+    keyctl timeout "$MASTER_ID" 1800
+    
+    keyctl pipe "$MASTER_ID" | keepassxc-cli "$@"
+
+elif [ "$OS" = "Darwin" ]; then
+    # ==========================================
+    # MACOS LOGIC (Keychain)
+    # ==========================================
+    ACCOUNT_NAME="$USER"
+
+    if ! security find-generic-password -a "$ACCOUNT_NAME" -s "$SERVICE_NAME" >/dev/null 2>&1; then
+        echo -n "Enter password: "
+        read -s MASTER
+        echo ""
+        security add-generic-password -a "$ACCOUNT_NAME" -s "$SERVICE_NAME" -w "$MASTER" >/dev/null 2>&1
+        unset MASTER
+    fi
+
+    MASTER_VAL=$(security find-generic-password -a "$ACCOUNT_NAME" -s "$SERVICE_NAME" -w)
+    echo -n "$MASTER_VAL" | keepassxc-cli "$@"
+
+else
+    echo "Unsupported Operating System: $OS"
+    exit 1
+fi
