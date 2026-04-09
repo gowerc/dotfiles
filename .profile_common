@@ -45,8 +45,6 @@ command -v xdg-open &> /dev/null && alias open="xdg-open"
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
-### If installed enable pyenv
-command -v pyenv &> /dev/null && eval "$(pyenv init -)" 
 
 function about () {
     echo ""
