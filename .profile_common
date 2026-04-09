@@ -35,8 +35,7 @@ alias gg="git log --graph -n 10 --oneline"
 
 alias psa="source venv/bin/activate"
 
-# If nvim is installed then use that by default instead of vim
-command -v nvim &> /dev/null && alias vim="nvim"
+
 
 # If open isn't available (on Linux) set to xdg-open
 command -v xdg-open &> /dev/null && alias open="xdg-open"
@@ -57,7 +56,7 @@ function about () {
     printf "$STRING" "${PREFIX}Host" "${HOST-Unknown}"
     printf "$STRING" "${PREFIX}Nickname" "${NICKNAME-Unknown}"
     if command -v sw_vers &> /dev/null ; then
-        LOCAL_SYS=$(sw_vers | awk '/ProductName/ {printf $2 " (" }  /ProductVersion/ {print $2 ")"}')
+        LOCAL_SYS=$(sw_vers | awk '/ProductName:/ {printf $2 " (" }  /ProductVersion:/ {print $2 ")"}')
     elif [ -r /etc/os-release ]; then
         LOCAL_SYS_1=$(cat /etc/os-release | \
                 awk '/^NAME/ {printf $0}' | \
@@ -77,7 +76,6 @@ function about () {
 
 # Only execute "about" if we are running in interactive mode
 # Otherwise the startup script breaks sftp connections
-#case $- in *i*) about;; esac
 case $- in *i*) about;; esac
 
 
@@ -134,9 +132,17 @@ elif command -v pbcopy 1>/dev/null; then
 fi
 
 
-# Support for vcpkg
+# vcpkg (cpp package manager)
 if command -v vcpkg &> /dev/null  ; then
     export VCPKG_DISABLE_METRICS=TRUE
     export VCPKG_ROOT=$(dirname "$(realpath "$(command -v vcpkg)")")
 fi
 
+
+# Bun (js server runtime)
+[ -d "$HOME/.local/opt/bun" ] && export BUN_INSTALL="$HOME/.local/opt/bun"
+
+
+# nvim
+# If nvim is installed then use that by default instead of vim
+command -v nvim &> /dev/null && alias vim="nvim"

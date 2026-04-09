@@ -91,25 +91,8 @@ if [ -r $HOME/.profile_common ] ; then
 fi
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
-
-
-
 
 
 # Set list of themes to pick from when loading at random
@@ -166,5 +149,3 @@ fi
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
-
-
