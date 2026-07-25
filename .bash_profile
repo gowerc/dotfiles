@@ -9,7 +9,9 @@ function parse_git_branch {
         sed -e '/^[^*]/d' -e "s/* \(.*\)/(\1$(parse_git_dirty))/"
 }
 function parse_git_dirty {
-    [[ -n "$(git status -s 2> /dev/null)" ]] && echo "*"
+    if [[ ${PARSE_GIT_DIRTY:-YES} == "YES" ]] ; then
+        [[ -n "$(git status -s 2> /dev/null)" ]] && echo "*"
+    fi
 }
 
 export VIRTUAL_ENV_DISABLE_PROMPT=TRUE
