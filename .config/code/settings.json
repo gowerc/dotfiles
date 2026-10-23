@@ -1,0 +1,361 @@
+
+
+{
+
+	///////////////////
+    //
+    // Editor settings
+    //
+    ///////////////////
+
+    "editor.trimAutoWhitespace": false,      // Stop auto removing of white space
+	"editor.renderWhitespace": "all",        // View white space
+	"editor.detectIndentation": true,        // Auto determine how much space for tab
+	"editor.tabSize": 4,                     // default tab space (see above)
+	"editor.insertSpaces": true,             // Insert spaces for tabs
+	"editor.suggestSelection": "first",
+	"editor.minimap.enabled": false,
+	"editor.autoClosingOvertype": "always",
+	"explorer.confirmDelete": false,
+	"editor.formatOnType" : true,
+    "editor.rulers": [100],
+    "editor.inlineSuggest.enabled": true,
+    "editor.wordWrap": "on",
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/renv/**": true
+    },
+    "search.exclude": {
+        "**/.git": true,
+        "**/node_modules": true,
+        "**/bower_components": true,
+        "**/venv": true,
+        "**/renv": true,
+        "**/tmp": true
+    },
+    "window.titleBarStyle": "custom", // Linux remove top title bar to get more verticle space
+    "files.eol": "\n",
+	"explorer.confirmDragAndDrop": false,
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+	"workbench.iconTheme": "vscode-icons",
+	"workbench.panel.defaultLocation": "bottom",
+    "workbench.editor.showTabs": "single",
+    "settingsSync.keybindingsPerPlatform": false,
+    "vsicons.dontShowNewVersionMessage": true,
+	// Mac specific
+	"terminal.external.osxExec": "Iterm.app",
+
+
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    "files.associations": {
+        "*.Rmd": "rmd",
+		"*.rmd": "rmd"
+    },
+    
+    ///////////////////
+    //
+    // Colors and themes
+    //
+    ///////////////////
+    
+    "workbench.experimental.modernUI": false,   // Removes border around mac-os window
+    "workbench.colorTheme": "Hop Light",
+    "editor.selectionHighlight": true,
+    "editor.roundedSelection": false,
+    "editor.occurrencesHighlight": "off",
+
+    // Background colours when highlighting text
+    // Background colours of matched words when making a selction
+    "workbench.colorCustomizations": {
+        "editor.selectionBackground": "#62c3d8",
+        "editor.selectionHighlightBackground": "#d7d6d6",
+        "quickInputList.focusBackground": "#cacaca",
+    },
+    
+    // Overwriting the default commment colour
+    "editor.tokenColorCustomizations": {
+        "textMateRules" : [
+            {
+                "scope": "comment",
+                "settings": {
+                    "foreground": "#25a723"
+                }
+            }
+        ]
+    },
+    
+    // Forcing Hoplight to use semantic highlighting for SAS as it doesn't opt in by default
+    "[sas]":{
+        "editor.semanticHighlighting.enabled": true
+    },
+    //Matches from semantic tokens take precidence over textMate rules
+    "editor.semanticTokenColorCustomizations": {
+        "rules": {
+            "sec-keyword:sas":{"foreground": "#491cfc"},
+            "proc-name:sas": {"foreground": "#491cfc"}
+        }
+    },
+
+
+
+	///////////////////
+    //
+    //  R based extension settings
+    //
+	///////////////////
+    "r.alwaysUseActiveTerminal": true,
+    "r.liveShare.defaults.shareWorkspace": false,
+    "r.lsp.promptToInstall": false,
+    "r.session.objectTimeout": 10,
+    "r.session.useWebServer": true,
+    "r.sessionWatcher": true,
+    "r.lsp.index_exclude": "rv/**/*.R",
+
+
+
+    ///////////////////
+    //
+    //  YAML
+    //
+	///////////////////
+
+    "[yaml]":  {
+		"editor.insertSpaces": true,
+		"editor.tabSize": 4,
+		"editor.autoIndent": "brackets"
+    },
+
+
+	///////////////////
+	//
+	//  Remotes
+	//
+	///////////////////
+
+    // "dev.containers.defaultExtensions": [
+    //     "13xforever.language-x86-64-assembly",
+    //     "ban.spellright",
+    //     "bubersson.theme-hop-light",
+    //     "bungcip.better-toml",
+    //     "christian-kohler.path-intellisense",
+    //     "dbaeumer.vscode-eslint",
+    //     "eamodio.gitlens",
+    //     "GitHub.vscode-pull-request-github",
+    //     "glenn2223.live-sass",
+    //     "goessner.mdmath",
+    //     "Gruntfuggly.todo-tree",
+    //     "hediet.vscode-drawio",
+    //     "ivan-bocharov.stan-vscode",
+    //     "ms-azuretools.vscode-docker",
+    //     "ms-python.python",
+    //     "ms-python.vscode-pylance",
+    //     "ms-vscode-remote.remote-containers",
+    //     "ms-vscode-remote.remote-ssh",
+    //     "ms-vscode-remote.remote-ssh-edit",
+    //     "ms-vscode.cmake-tools",
+    //     "ms-vscode.cpptools",
+    //     "ms-vscode.hexeditor",
+    //     "ms-vscode.remote-explorer",
+    //     "quarto.quarto",
+    //     "REditorSupport.r",
+    //     "ritwickdey.LiveServer",
+    //     "SAS.sas-lsp",
+    //     "snakemake.snakemake-lang",
+    //     "twxs.cmake",
+    //     "vadimcn.vscode-lldb",
+    //     "VisualStudioExptTeam.vscodeintellicode",
+    //     "vscode-icons-team.vscode-icons",
+    //     "vscodevim.vim",
+    //     "Vue.volar",
+    //     "Zignd.html-css-class-completion"
+    // ],
+
+	///////////////////
+	//
+	//  Python
+	//
+	///////////////////
+    "python.analysis.typeCheckingMode": "standard",
+    "python.languageServer": "Pylance",
+    "python.analysis.completeFunctionParens": true,
+
+    
+    
+    
+    ///////////////////
+	//
+	//  CPP
+	//
+	///////////////////
+    
+    "[cpp]": {
+        "editor.wordBasedSuggestions": "off",
+        "editor.suggest.insertMode": "replace",
+        "editor.semanticHighlighting.enabled": true,
+        "editor.formatOnType" : false,
+    },
+    
+    
+    
+    
+	///////////////////
+	//
+	//  VIM
+	//
+	///////////////////
+
+    "vim.handleKeys":{
+        "<C-c>": false,
+        "<C-x>": false,
+        "<C-v>": false,
+        "<C-z>": false,
+        "<C-b>": false,
+        "<C-a>": false,
+        "<C-s>": false,
+        "<C-f>": false,
+        "<C-r>": false,
+        "<C-k>": false,
+        "<C-d>": false,
+        "<C-p>": false,
+        "<C-i>": false,
+        "<C-w>": false,
+    },
+    "keyboard.dispatch": "keyCode",
+    
+
+
+    ///////////////////
+	//
+	//  TODO-Tree
+	//
+	///////////////////
+    "todo-tree.general.tags": [
+        "BUG",
+        "HACK",
+        "FIXME",
+        "TODO",
+        "XXX",
+        "[ ]",
+        "[x]"
+    ],
+    "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
+    
+    
+    ///////////////////////////////////
+    //
+    //  Git
+    //
+    ///////////////////////////////////
+    
+    
+    "git.ignoreLegacyWarning": true,
+    "git.confirmSync": false,
+    "git.openRepositoryInParentFolders": "never",
+    "git.autofetch": true,
+    
+    "githubPullRequests.pullBranch": "never",            // Disable automatic pulling of branches
+    "githubPullRequests.createOnPublishBranch": "never", // Disable automatic creation of MRs
+    
+    
+    ///////////////////////////////////
+    //
+    //  emmet
+    //
+    ///////////////////////////////////
+    
+    "emmet.excludeLanguages": [],  // Default exclude includes markdown
+    "emmet.triggerExpansionOnTab": true,
+    "emmet.includeLanguages": {
+        "quarto": "html",
+        "markdown": "html"
+    },
+    
+    
+    ///////////////////////////////////
+    //
+    //  SAS
+    //
+    ///////////////////////////////////
+
+    
+    
+    ///////////////////////////////////
+    //
+    //  Unsorted
+    //
+    //////////////////////////////////
+    
+    "spellright.language": [
+        "English (British)"
+    ],
+    
+    "liveServer.settings.donotVerifyTags": true,
+    "liveServer.settings.donotShowInfoMsg": true,
+    
+
+    "security.workspace.trust.untrustedFiles": "open",
+    "liveSassCompile.settings.showOutputWindowOn": "Debug",
+    
+    
+    "path-intellisense.mappings": {
+        "./": "${workspaceFolder}",
+        // "lib": "${workspaceFolder}/lib",
+        // "global": "/Users/dummy/globalLibs"
+    },
+    "hexeditor.columnWidth": 16,
+    "hexeditor.showDecodedText": true,
+    "hexeditor.defaultEndianness": "little",
+    "hexeditor.inspectorType": "aside",
+    "debug.onTaskErrors": "abort",
+    "debug.focusEditorOnBreak": false,
+    "workbench.startupEditor": "none",
+    "python.terminal.activateEnvironment": false,
+    "github.copilot.enable": {
+        "quarto": false,
+        "*": false,
+        "cpp": false,
+        "python": false,
+        "R": false
+    },
+    "terminal.integrated.enableMultiLinePasteWarning": "never",
+    
+    "hediet.vscode-drawio.resizeImages": null,
+    "cmake.pinnedCommands": [
+        "workbench.action.tasks.configureTaskRunner",
+        "workbench.action.tasks.runTask"
+    ],
+    "lldb.suppressUpdateNotifications": true,
+    "SAS.connectionProfiles": {
+        "activeProfile": "",
+        "profiles": {}
+    },
+    "docker.lsp.telemetry": "off",
+    "gitlens.telemetry.enabled": false,
+    "telemetry.editStats.enabled": false,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "github.copilot.nextEditSuggestions.enabled": true,
+    "window.zoomLevel": 1.7,
+    "workbench.secondarySideBar.defaultVisibility": "hidden",
+    "chat.viewSessions.enabled": false,
+    "terminal.integrated.suggest.enabled": false,
+    "extensions.autoCheckUpdates": false,
+    "extensions.autoUpdate": "off",
+    "dev.containers.dockerPath": "podman",
+    "dev.containers.dockerComposePath": "podman-compose",
+    "diffEditor.renderSideBySideInlineBreakpoint": 1400,
+    
+    
+    
+    
+    "[r]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "Posit.air-vscode"
+    },
+    "editor.inlayHints.enabled": "offUnlessPressed",
+    "git.blame.editorDecoration.enabled": false,
+    "git.blame.statusBarItem.enabled": false,
+
+}
