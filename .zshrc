@@ -79,7 +79,7 @@ compinit -d "$HOME/.zsh/.zcompdump"  # Redirect cache files
 
 
 ### Enable oh-my-zsh plugins
-plugins=(docker docker-compose)
+plugins=( )
 
 
 ### Enable oh-my-zsh
