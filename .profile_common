@@ -146,3 +146,17 @@ fi
 # nvim
 # If nvim is installed then use that by default instead of vim
 command -v nvim &> /dev/null && alias vim="nvim"
+
+
+
+# Set colour theme to use with gh cli
+# default is dark mode which is hard to use on white terminals
+export GLAMOUR_STYLE=light
+
+
+
+# Stop less using alternative screen and keep output on a single line
+export PAGER=less
+export LESS='-F -X -R'
+
+

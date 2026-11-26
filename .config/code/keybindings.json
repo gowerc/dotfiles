@@ -1,0 +1,267 @@
+[
+	////////////////////
+	//
+	// Meta
+	//
+	///////////////////
+    {
+      "key": "cmd+alt+shift+i",
+      "command": "editor.action.inspectTMScopes"
+    },
+    {
+        "key": "cmd+shift+t",
+        "command": "workbench.action.tasks.test"
+    },
+    
+    ////////////////////
+    //
+    // Window switching 
+    //
+    ///////////////////
+    { 
+        "key": "alt+z", 
+        "command": "workbench.action.terminal.focus",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+shift+left",
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "alt+shift+right",
+        "command": "workbench.action.terminal.focus",
+        "when": "editorTextFocus"
+    },
+    {
+        "key" : "alt+f",
+        "command": "workbench.files.action.focusFilesExplorer",
+    },
+    { 
+        "key": "alt+z", 
+        "command": "workbench.action.focusActiveEditorGroup", 
+        "when": "terminalFocus"
+    },    
+    { 
+        "key": "alt+e", 
+        "command": "workbench.action.focusFirstEditorGroup",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "alt+p", 
+        "command": "workbench.action.problems.focus"
+    },
+    { 
+        "key": "alt+t", 
+        "command": "workbench.action.terminal.focus"
+    }, 
+    {
+        "key" : "alt+x",
+        "command": "workbench.action.terminal.focusNext"
+    },
+    {
+        "key" :"alt+o",
+        "command" : "workbench.action.output.toggleOutput"
+    },
+    {
+        "key": "alt+tab",
+        "command": "workbench.action.quickSwitchWindow"
+    },
+    
+    ////////////////////
+    //
+    // Interactive code execution 
+    //
+    ///////////////////
+    {
+        "key": "ctrl+enter",
+        "command": "runCommands",
+        "args": { 
+            "commands": [
+                "cursorLineStart",
+                "expandLineSelection",
+                "workbench.action.terminal.runSelectedText",
+                "cancelSelection",
+                "workbench.action.focusActiveEditorGroup"
+            ]
+        },
+        "when": "editorTextFocus && !editorHasSelection"
+    },
+    {
+        "key": "ctrl+enter",
+        "command": "workbench.action.terminal.runSelectedText",
+        "when": "editorTextFocus && editorHasSelection"
+    },
+    {
+        "key" : "ctrl+enter",
+        "command" : "r.runSelection",
+        "when" :  "editorTextFocus && resourceExtname =~  /.R$|.Rmd$/"
+    },
+    // {
+    //     "key" : "ctrl+enter",
+    //     "command" : "workbench.action.terminal.runSelectedText",
+    //     "when" :  "editorTextFocus && resourceExtname =~  /.R$|.Rmd$/"
+    // },
+    
+    ////////////////////
+    //
+    // Inserts
+    //
+    ///////////////////
+  
+    
+    // R - Magrittr pipes
+    {
+        "key": "ctrl+shift+m",
+        "command": "editor.action.insertSnippet",
+        "when" : "editorFocus && resourceExtname =~  /.R$|.Rmd$|.r$/",
+        "args": {
+            "snippet": "|>"
+        }
+    },
+    {
+        "key": "ctrl+shift+m",
+        "command": "workbench.action.terminal.sendSequence",
+        "when":  "terminalFocus",
+        "args": { "text": "|>" }
+     },
+     
+    
+     {
+        "key": "alt+m",
+        "command": "r.runCommandWithSelectionOrWord",
+        "when": "editorFocus && resourceExtname =~  /.R$|.Rmd$/",
+        "args": "lobstr::tree($$, max_depth = 1)"
+     },
+     
+    ////////////////////
+    //
+    // Batch Command execution
+    //
+    ///////////////////
+    
+    
+    // Refresh R session
+    // {
+    //     "key": "alt+r",
+    //     "command": "workbench.action.terminal.sendSequence",
+    //     "when":  "editorFocus && resourceExtname =~  /.R$|.Rmd$/",
+    //     "args": { "text": " q('no')\nR\noptions(width=Sys.getenv('COLUMNS'))\nsource(file.path(Sys.getenv(if (.Platform$OS.type == 'windows')'USERPROFILE' else 'HOME'), '.vscode-R', 'init.R'))\n"}
+    // },
+    {
+        "key": "alt+r",
+        "command": "runCommands",
+        "args": { 
+            "commands": [
+                {
+                    "command": "workbench.action.terminal.sendSequence",
+                    "args": { "text": "q('no')\u000d" }
+                },
+                "r.createRTerm",
+                "workbench.action.focusActiveEditorGroup"
+            ]
+        },
+        "when": "editorFocus && resourceExtname =~  /.R$|.Rmd$/"
+    },
+    // R load all - Editor focus
+    {
+        "key": "alt+l",
+        "command": "workbench.action.terminal.sendSequence",
+        "when":  "editorFocus && resourceExtname =~  /.R$|.Rmd$/",
+        "args": { "text": "devtools::load_all()\u000d"}
+    },
+    //R load all - Terminal focus
+    { 
+        "key": "alt+l",
+        "command": "workbench.action.terminal.sendSequence",
+        "when":  "terminalFocus",
+        "args": { "text": "devtools::load_all()\u000d"}
+    },
+    // R Document
+    {
+        "key": "alt+d",
+        "command": "workbench.action.terminal.sendSequence",
+        "when":  "editorFocus && resourceExtname =~  /.R$|.Rmd$/",
+        "args": { "text": "devtools::document()\u000d"}
+    },
+    
+    // R Help
+    {
+        "key": "alt+h",
+        "command": "r.helpPanel.openForSelection",
+        "when":  "editorFocus && resourceExtname =~  /.R$|.Rmd$/"
+    },
+    
+    // R set terminal width
+    {
+        "key": "alt+w",
+        "command": "workbench.action.terminal.sendSequence",
+        "when":  "editorFocus && resourceExtname =~  /.R$|.Rmd$/",
+        "args": { "text": "options(width=Sys.getenv('COLUMNS'))\n"}
+    },
+    
+    // R set session watcher
+    {
+        "key": "alt+q",
+        "command": "workbench.action.terminal.sendSequence",
+        "when":  "editorFocus && resourceExtname =~  /.R$|.Rmd$/",
+        "args": { "text": "source(file.path(Sys.getenv(if (.Platform$OS.type == 'windows')'USERPROFILE' else 'HOME'), '.vscode-R', 'init.R'))\n"}
+    },
+    
+    // sever contents via webserver port 8000 
+    {
+        "key": "alt+s",
+        "command": "workbench.action.terminal.sendSequence",
+        "args": { "text": "python3 -m http.server\n" }
+    },
+
+    { 
+        "key": ".", 
+        "command": ""
+    },
+    
+    
+    // Disable default cmd+, which opens settings menu
+    {
+        "key": "cmd+,",
+        "command": "workbench.action.focusActiveEditorGroup"
+    },
+    // Replace cmd+,  to open hover menu
+    {
+        "key": "alt+,",
+        "command": "editor.action.showHover",
+        "when": "editorFocus"
+    },
+
+    {
+        "key": "ctrl+j",
+        "command": "",
+        "when":  ""
+    },
+    {
+        "key": "alt+f12",
+        "command": "editor.action.peekDefinition",
+        "when": "editorHasDefinitionProvider && !inReferenceSearchEditor && !isInEmbeddedEditor"
+    }
+    
+    // ${file}: activated file path;
+    // ${fileBasename}: activated file basename;
+    // ${fileBasenameNoExtension}: activated file basename with no extension;
+    // ${fileDirname}: activated file dirname;
+    // ${fileExtname}: activated file extension;
+    // ${lineNumber}: the first selected line number;
+    // ${lineNumbers}: the all selected line number, eg. 41,46,80;
+    // ${selectedText}: the first selected text;
+    // ${selectedTextList}: the all selected text list, eg. sl1 sl2;
+    // ${selectedPosition}: the selected position list, eg. 21,6;
+    // ${selectedPositionList}: the all selected position list, eg. 45,6 80,18 82,5;
+    // ${relativeFile}: activated file relative path;
+    // ${workspaceFolder}: activated workspace folder path;
+    // ${workspaceFolderBasename}: activated workspace folder basename;
+    // ${homedir}: the home directory of the current user;
+    // ${tmpdir}: default directory for temporary files;
+    // ${env:PATH}: shell environment variable "PATH";
+    // ${config:editor.fontSize}: vscode config variable;
+    // ${command:workbench.action.terminal.clear}: run vscode command;
+
+]
